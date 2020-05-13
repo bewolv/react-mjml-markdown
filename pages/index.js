@@ -5,6 +5,17 @@ export default () => {
   const [html, updateHtml] = React.useState("");
   const [isPreviewMode, updateIsPreviewMode] = React.useState(true);
 
+  const refreshPreview = () => {
+    fetch(`/api/generatehtml`, {
+      method: "POST",
+      body: JSON.stringify({
+        markdown,
+      }),
+    })
+      .then((res) => res.json())
+      .then((res) => updateHtml(res.html));
+  };
+
   return (
     <>
       <div className="root">
@@ -14,16 +25,7 @@ export default () => {
               const value = getValue();
               updateMarkdown(value);
             }}
-            onSave={() =>
-              fetch(`/api/generatehtml`, {
-                method: "POST",
-                body: JSON.stringify({
-                  markdown,
-                }),
-              })
-                .then((res) => res.json())
-                .then((res) => updateHtml(res.html))
-            }
+            onSave={() => refreshPreview()}
           />
         </div>
         <div className="right-side-container">
@@ -35,6 +37,9 @@ export default () => {
         </div>
       </div>
       <div className="controls-container">
+        <button onClick={() => refreshPreview()} style={{ marginRight: 10 }}>
+          Refresh
+        </button>
         <button onClick={() => updateIsPreviewMode(!isPreviewMode)}>
           {isPreviewMode ? "HTML" : "PREVIEW"}
         </button>
