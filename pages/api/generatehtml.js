@@ -14,6 +14,12 @@ export default (req, res) => {
             h3 { font-size: 20px; }
             p { font-size: 15px; }
             li { font-size: 15px; }
+            code { font-size: 14px; }
+            pre { 
+              background-color: rgb(244, 247, 250);
+              padding: 10px;
+              border-radius: 4px;
+            }
           </mj-style>
         </mj-head>
         <mj-body>
