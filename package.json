@@ -1,0 +1,18 @@
+{
+  "name": "react-mjml-markdown",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "next",
+    "build": "next build",
+    "start": "next start"
+  },
+  "dependencies": {
+    "marked": "^1.0.0",
+    "mjml": "^4.6.3",
+    "next": "latest",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "rich-markdown-editor": "^10.0.0-16"
+  },
+  "license": "ISC"
+}
